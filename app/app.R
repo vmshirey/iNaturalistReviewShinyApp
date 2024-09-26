@@ -27,7 +27,9 @@ server <- function(input, output){
   
   output$mytable <- DT::renderDataTable(iNat_dt,
                                         filter = "top", 
-                                        options = list(pageLength = 10))
+                                        options = list(pageLength = 10,
+                                                       scrollX = TRUE,
+                                                       scrollCollapse = TRUE))
   
 }
 
