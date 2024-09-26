@@ -4,7 +4,7 @@ library(shinythemes)
 library(tidyverse)
 library(DT)
 
-iNat_dt <- data.table::fread("../data/Cleaned_Master_Database_Vaughn.csv") %>%
+iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv") %>%
   dplyr::select(Key, Language, `Publication Year`, Author, Title, Journal,
                 `Study Area Country`, `Study Area Region`, `Study Area Continent`, 
                 15:21, `Paper Topic`)
