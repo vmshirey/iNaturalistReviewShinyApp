@@ -1,7 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
-library(tidyverse)
+library(dplyr)
 library(DT)
 
 iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv") %>%
