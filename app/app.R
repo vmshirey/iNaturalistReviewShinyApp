@@ -6,7 +6,7 @@ library(DT)
 
 iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv",
                              header = TRUE, stringsAsFactors = FALSE,
-                             encoding = "Latin-1") %>%
+                             encoding = "UTF-8") %>%
   dplyr::select(Key, Language, `Publication Year`, Author, Title, Journal,
                 `Study Area Country`, `Study Area Region`, `Study Area Continent`, 
                 15:20, `Paper Topic`)
