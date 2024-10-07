@@ -4,10 +4,12 @@ library(shinythemes)
 library(dplyr)
 library(DT)
 
-iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv") %>%
+iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv",
+                             header = TRUE, stringsAsFactors = FALSE,
+                             encoding = "Latin-1") %>%
   dplyr::select(Key, Language, `Publication Year`, Author, Title, Journal,
                 `Study Area Country`, `Study Area Region`, `Study Area Continent`, 
-                15:21, `Paper Topic`)
+                15:20, `Paper Topic`)
 
 ui <- shinydashboard::dashboardPage(
   
