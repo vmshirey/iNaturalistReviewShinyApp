@@ -2,14 +2,15 @@ library(shiny)
 library(shinydashboard)
 library(shinythemes)
 library(dplyr)
+library(readr)
 library(DT)
 
-iNat_dt <- data.table::fread("Cleaned_Master_Database_Vaughn.csv",
-                             header = TRUE, stringsAsFactors = FALSE,
-                             encoding = "UTF-8") %>%
+iNat_dt <- read_csv("Cleaned_Master_Database_Vaughn.csv",
+                    locale = locale(encoding = "Latin1")) %>%
   dplyr::select(Key, Language, `Publication Year`, Author, Title, Journal,
-                `Study Area Country`, `Study Area Region`, `Study Area Continent`, 
-                15:20, `Paper Topic`)
+                `Study Area Country`, `Study Area Region`, `Study Area Continent`, `Studied Taxa - Order`,
+                `Species of Conservation Concern?`, `Non-Native Species?`, `iNaturalist Data Type`,
+                15:20, `Paper Topic`, `Analyses Conducted`)
 
 ui <- shinydashboard::dashboardPage(
   
@@ -28,8 +29,8 @@ ui <- shinydashboard::dashboardPage(
 server <- function(input, output){
   
   output$mytable <- DT::renderDataTable(iNat_dt,
-                                        filter = "top", 
-                                        options = list(pageLength = 10,
+                                        filter = "top",
+                                        options = list(pageLength = 5,
                                                        scrollX = TRUE,
                                                        scrollCollapse = TRUE))
   
