@@ -7,6 +7,7 @@ library(DT)
 
 iNat_dt <- read_csv("Cleaned_Master_Database_Vaughn.csv",
                     locale = locale(encoding = "Latin1")) %>%
+  dplyr::mutate(across(where(is.character), iconv, "Latin1", "UTF-8")) %>%
   dplyr::select(Key, Language, `Publication Year`, Author, Title, Journal,
                 `Study Area Country`, `Study Area Region`, `Study Area Continent`, `Studied Taxa - Order`,
                 `Species of Conservation Concern?`, `Non-Native Species?`, `iNaturalist Data Type`,
